@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "../../App.css";
-import { Botao } from "../../components/Botao";
+import { Botao } from "../../components";
 
 export const Login = () => {
   const history = useHistory();

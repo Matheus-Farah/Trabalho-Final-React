@@ -1,21 +1,35 @@
 import React from "react";
-import Nike from "./imagens/logo-nike-512.png"
-import { Botao } from "../../components/Botao";
-import { Container, HomeStyle, IMG } from "./styles";
-import { useHistory } from "react-router-dom";
-
+import { Card } from "../../components";
+import { data } from "../../data/produtos";
+import "../../App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Home = () => {
-    const history = useHistory();
-    return(
-        <HomeStyle>
-        <Container>
-            <IMG src={Nike} alt="Nike" width="60" height="60"/>
-            <Botao nome="Quem Somos" onClick={() => history.push("/Quem Somos")}/>
-            <Botao nome="Carrinho" onClick={() => history.push("/Carrinho")}/>
-            <Botao nome="Perfil" onClick={() => history.push("/Perfil")}/>
-            <Botao nome="Sair" onClick={() => history.push("/")}/>
-        </Container>
-    </HomeStyle>
-    );
-}
+  return (
+    <div className="container">
+      <div className="row">
+        {data.map((produtos) => (
+          <div className="col">
+            <Card
+              id={produtos.id}
+              key={produtos.id}
+              nome={produtos.name}
+              preco={produtos.preco}
+              imagem={produtos.icon}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// useEffect(() => {
+//     if(localStorage.getItem('myKey')) {
+//       setState(localStorage.getItem('myKey');
+//     }
+//   }, []);
+
+//   useEffect(() => {
+//     localStorage.setItem('myKey', state);
+//   }, [state]);
