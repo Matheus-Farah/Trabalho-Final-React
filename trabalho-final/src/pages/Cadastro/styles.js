@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    gap: 15px;
+  margin: auto;
+  gap: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,9 +13,10 @@ export const Content = styled.div`
   max-width: 350px;
   padding: 20px;
   border-radius: 5px;
-`
+`;
 
 export const Fundo = styled.body`
-    margin-top: -50px;
-    background-color: #282c34;
-`
+  margin-top: -50px;
+  background-color: #282c34;
+  padding: 10px;
+`;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../../App.css";
 import { Botao } from "../../components";
-import { labelError } from "./styles";
+import { LabelError } from "./styles";
 
 export const Login = () => {
   const history = useHistory();
@@ -11,13 +11,16 @@ export const Login = () => {
     senha: "",
   });
   const [error, setError] = useState("");
+  const [usuario, setUsuario] = useState([]);
+  const [storeToken, setStoreToken] = useState({});
+  const {storeEmail, setStoreEmail} = useState();
 
   const CheckLogin = () => {
-    if (!dados.email | !dados.senha) {
+    if (!dados.email || !dados.senha) {
       setError("Preencha todos os campos");
       return;
     }
-    return;
+    history.push("/Home");
   };
 
   return (
@@ -37,12 +40,22 @@ export const Login = () => {
           value={dados.senha}
           onChange={(e) => [setDados(e.target.value), setError("")]}
         />
-        <labelError>{error}</labelError>
+        <LabelError>{error}</LabelError>
         <p className="Cadastro">
-          Não tem uma conta? <a href="/Cadastro">Cadastre-se</a>
+          Não tem uma conta? <Link to="/Cadastro">Cadastre-se</Link>
         </p>
-        <Botao nome="Login" onClick={ () => [{CheckLogin}, history.push("/Home")]} />
+        <Botao nome="Login" onClick={ () => CheckLogin()} />
       </header>
     </div>
   );
 };
+
+// useEffect(() => {
+//     if(localStorage.getItem('myKey')) {
+//       setState(localStorage.getItem('myKey');
+//     }
+//   }, []);
+
+//   useEffect(() => {
+//     localStorage.setItem('myKey', state);
+//   }, [state]);

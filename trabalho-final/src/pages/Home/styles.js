@@ -5,4 +5,8 @@ export const Container = styled.div`
     text-align: right;
 `;
 
+export const Fundo = styled.body`
+  background-color: #FFF;
+  padding: 10px;
+`;
 
