@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import Cordeirinho from "./imagens/Cordeirinho.png";
-import Botao from "../Botao";
+import { Botao } from "../../components";
 import { HomeStyle, Container, IMG } from "./style";
 
 const Header = () => {
