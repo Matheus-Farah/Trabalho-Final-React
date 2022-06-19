@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Content} from "./styles";
 import { Botao } from "../../components";
 import { InputTelefone, InputCpf } from "../../components";
 import { useHistory } from "react-router-dom";
+import { useParams } from 'react-router-dom'
+import { data } from "../../data/produtos";
 
 
-export const Produto = () => {
+
+export const Produto = (props) => {
+  const { id } = useParams()
+
+  useEffect(()=> {
+      //fazer requisição api
+      const produtoRecebido = data.find((p) => p.id === id );
+      setProduto(produtoRecebido)
+  })
   const history = useHistory
+  const  [produto, setProduto] = useState([])
+  
   return (
       <Container>
       <div className="container">
         {/* <div className="row"> */}
         <Content>
           {/* <div className="col-sm-6  col-md-6"> */}
-          <label>Nome:</label>
+          <p>{produto.name}</p>
           <input type="text" />
           <label>Cpf:</label>
           <InputCpf />
