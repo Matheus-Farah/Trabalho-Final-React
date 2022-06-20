@@ -12,7 +12,7 @@ export const Produto = (props) => {
   const { id } = useParams()
 
   useEffect(()=> {
-      //fazer requisição api
+      //fazer
       const produtoRecebido = data.find((p) => p.id === id );
       setProduto(produtoRecebido)
   })
