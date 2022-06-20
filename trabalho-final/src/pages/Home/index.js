@@ -1,35 +1,44 @@
 import { Card } from "../../components";
-import { data } from "../../data/produtos";
+// import { data } from "../../data/produtos";
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Fundo } from "./styles";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../providers/auth";
 import api from "../../services/api";
 
 
 export const Home = () => {
   const { token } = useContext(DataContext);
-  console.log(token);
+  
 
-  const getProdutos = async() =>{
-    const { produtos }= await api.get(`produto`, { headers: { Authorization: token } });
-    console.log(produtos)
-  }
+     const [produtos, setProdutos] = useState([]);
 
-  getProdutos();
+     const fetchprodutos = async () => {
+       const { data } = await api.get(`produto`, { headers: { Authorization: token } });
+       const products = data
+       setProdutos(products);
+     };
+    useEffect(() => {
+
+
+      fetchprodutos()
+      
+    }, [fetchprodutos]);
+
+
 
   return (
     <Fundo>
       <div className="container">
         <div className="row">
-          {data.map((produtos) => (
-            <div className="col" key={produtos.id}>
+          {produtos.map((produto) => (
+            <div className="col" key={produto.id}>
               <Card
-                id={produtos.id}
-                nome={produtos.name}
-                preco={produtos.preco}
-                imagem={produtos.icon}
+                id={produto.id}
+                nome={produto.nome}
+                preco={produto.preco}
+                url={produto.url}
               />
             </div>
           ))}
