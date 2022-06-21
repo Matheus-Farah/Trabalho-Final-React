@@ -42,7 +42,7 @@ export const Login = () => {
       }
     }
 
-    console.log(token);
+    
     
 
   return (

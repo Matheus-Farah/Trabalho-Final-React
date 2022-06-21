@@ -47,7 +47,7 @@ export const Cadastro = () => {
         
 
         
-        console.log(dados)
+        
         const response = await api.post(`cliente`, dados);
 
       };
@@ -60,9 +60,9 @@ export const Cadastro = () => {
   return (
     <Fundo>
       <div className="container">
-        {/* <div className="row"> */}
+
         <Content>
-          {/* <div className="col-sm-6  col-md-6"> */}
+
           <label>Nome:</label>
           <input type="text" value={dados.nome}
             onChange={(e) => setDados({ ...dados, nome: e.target.value })} />
@@ -75,8 +75,7 @@ export const Cadastro = () => {
           <label>Data de Nascimento:</label>
           <input type="date" value={dados.dataNascimento}
             onChange={(e) => setDados({ ...dados, dataNascimento: e.target.value })} />
-          {/* </div> */}
-          {/* <div className="col-sm-6 col-md-6"> */}
+
           <label>Email:</label>
           <input type="email" value={usuarioNovo.email}
             onChange={(e) => setUsuarioNovo({ ...usuarioNovo,  email : e.target.value })} />
@@ -87,9 +86,9 @@ export const Cadastro = () => {
           <input type="text" value={usuarioNovo.username}
             onChange={(e) => setUsuarioNovo({ ...usuarioNovo, username: e.target.value })} />
           <Botao nome="Cadastro" onClick={() => cadastrar()} />
-          {/* </div> */}
+
         </Content>
-        {/* </div> */}
+
       </div>
     </Fundo>
   );
