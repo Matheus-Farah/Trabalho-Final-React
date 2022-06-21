@@ -37,8 +37,8 @@ export const Home = () => {
               <Card
                 id={produto.id}
                 nome={produto.nome}
-                preco={produto.preco}
-                url={produto.url}
+                preco={`R$${produto.preco}`}
+                imagem={produto.url}
               />
             </div>
           ))}

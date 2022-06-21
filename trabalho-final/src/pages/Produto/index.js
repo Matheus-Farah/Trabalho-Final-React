@@ -1,23 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Content} from "./styles";
 import { Botao } from "../../components";
 import { InputTelefone, InputCpf } from "../../components";
 import { useHistory } from "react-router-dom";
 import { useParams } from 'react-router-dom'
-import { data } from "../../data/produtos";
+// import { data } from "../../data/produtos";
+import api from "../../services/api";
+import { DataContext } from "../../providers/auth";
 
 
 
 export const Produto = (props) => {
   const { id } = useParams()
+  const { token } = useContext(DataContext);
+  
 
+     const [produto, setProduto] = useState([]);
+     console.log(produto);
+
+     const fetchprodutos = async () => {
+       const { data } = await api.get(`produto/${id}`, { headers: { Authorization: token } });
+       const products = data
+       setProduto(products);
+     };
   useEffect(()=> {
-      //fazer
-      const produtoRecebido = data.find((p) => p.id === id );
-      setProduto(produtoRecebido)
+      fetchprodutos();
+      // const produtoRecebido = produtos.find((p) => p.id === id );
+      
   })
   const history = useHistory
-  const  [produto, setProduto] = useState([])
   
   return (
       <Container>
@@ -25,7 +36,7 @@ export const Produto = (props) => {
         {/* <div className="row"> */}
         <Content>
           {/* <div className="col-sm-6  col-md-6"> */}
-          <p>{produto.name}</p>
+          <p>{produto.nome}</p>
           <input type="text" />
           <label>Cpf:</label>
           <InputCpf />
