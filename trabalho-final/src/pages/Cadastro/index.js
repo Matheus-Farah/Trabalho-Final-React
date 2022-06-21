@@ -39,11 +39,13 @@ export const Cadastro = () => {
       return;
     } else {
       const getData = async () => {
+        
+        
         setDados({ ...dados,  usuario : {email : usuarioNovo.email,
                                         senha : usuarioNovo.senha,
                                         username : usuarioNovo.username}  })
-        // setDados({ ...dados, nome: dados.nome.replace(/\D+/g, '')})
-
+        
+          
         
 
         

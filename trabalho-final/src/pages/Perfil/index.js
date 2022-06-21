@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Container } from "./styles";
+import { Container, Detalhes } from "./styles";
 import { Botao } from "../../components";
 import { useHistory } from "react-router-dom";
 import { DataContext } from "../../providers/auth";
@@ -49,10 +49,12 @@ export const Perfil = () => {
 
 
     return (
+        
         <Container>
             {descobrir()}
             <Botao nome="Cadastrar Endereço" onClick={() => history.push("/Endereco")} />
 
         </Container>
+        
     );
 }

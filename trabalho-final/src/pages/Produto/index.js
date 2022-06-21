@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Content} from "./styles";
+import { Container, Content, Texto} from "./styles";
 import { Botao } from "../../components";
 import { InputTelefone, InputCpf } from "../../components";
 import { useHistory } from "react-router-dom";
@@ -29,6 +29,9 @@ export const Produto = (props) => {
       
       handleAddCarrinho(produto, 15);
      }
+     function teste() {
+
+     }
   useEffect(()=> {
       fetchprodutos();
       // const produtoRecebido = produtos.find((p) => p.id === id );
@@ -42,21 +45,12 @@ export const Produto = (props) => {
 
         <Content>
 
-          <p>{produto.nome}</p>
-          <input type="text" />
-          <label>Cpf:</label>
-          <InputCpf />
-          <label>Telefone:</label>
-          <InputTelefone />
-          <label>Data de Nascimento:</label>
-          <input type="date" />
-          <label>Usuário:</label>
-          <input type="email" />
-          <label>Senha:</label>
-          <input type="password" />
-          <label>Nome de Usuário:</label>
-          <input type="text" />
-          <Botao nome="Adicionar ao Carrinho" onClick={() => addProduto(produto, 15)}/>
+          <h1>{produto.nome}</h1>
+          <img src={produto.url} alt="Imagem" width="170px" height="170px" />
+          <Texto>{produto.descricao}</Texto>
+          <Texto>{`R$${produto.preco}`}</Texto>
+
+          <Botao nome="Adicionar ao Carrinho" onClick={() => teste()}/>
 
         </Content>
 

@@ -20,3 +20,10 @@ export const Content = styled.div`
   border-radius: 5px;
 `;
 
+export const ImagemFundo = styled.img`
+    align-items: center;
+    opacity: 0.1;
+    padding: -100px 500px;
+    
+`;
+
